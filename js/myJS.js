@@ -41,7 +41,7 @@ L.marker([-41.28313,174.77736]).bindPopup('LeuvenBelginBeerCafe').addTo(coolPlac
 
 var map = L.map('map', {
     layers: [osmMap]
-}).setView([-41.3058, 174.82082], 14);
+}).setView([-41.5546, 174.146], 10);
 //mapLink ='<a href="http://openstreetmap.org">OpenStreetMap</a>';
 var baseLayers = {
     "OSM Mapnik": osmMap
@@ -88,6 +88,29 @@ var polyline = L.polyline(
 
 		var drawControl = new L.Control.Draw(
 			{
+				draw: {
+				polygon: {
+					shapeOptions: {
+						color: 'purple'
+					},
+				},
+			polyline: {
+					shapeOptions: {
+						color: 'red'
+					},
+				},
+				rect: {
+					shapeOptions: {
+						color: 'green'
+					},
+				},
+				circle: {
+					shapeOptions: {
+						color: 'steelblue'
+					},
+				},
+			},
+
 				edit:{
 					featureGroup: drawItems
 				}
@@ -98,3 +121,10 @@ var polyline = L.polyline(
 					layer = e.layer;
 					drawItems.addLayer(layer);
 		});
+		var osmGeocoder = new L.Control.OSMGeocoder();
+		map.addControl(osmGeocoder);
+		var heat = L.heatLayer(quakePoints,{
+             radius: 100,
+             blur: 10,
+             maxZoom: 17,
+         }).addTo(map);
