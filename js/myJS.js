@@ -47,10 +47,10 @@ var baseLayers = {
     "OSM Mapnik": osmMap
     , "Landscape": landMap
 };
-var overlays = {
-    "Interesting places": coolPlaces
-};
-L.control.layers(baseLayers, overlays).addTo(map);
+// var overlays = {
+//     "Interesting places": coolPlaces
+// };
+L.control.layers(baseLayers).addTo(map);
 
 
 //
